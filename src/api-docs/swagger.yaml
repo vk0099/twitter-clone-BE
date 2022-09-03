@@ -1,0 +1,261 @@
+openapi: 3.0.0
+info:
+    title: 'twitter clone'
+    version: 1.0.0
+    description: 'Node.js application with mongodb'
+
+servers:
+    - url: http://localhost:3000/api/v1
+      description: SwaggerHub API Auto Mocking
+tags:
+    - name: login
+      description: Secured Signup Calls
+    - name: tweet
+      description: Secured Login Calls
+paths:
+    /login/signup/:
+        post:
+            tags:
+                - 'login'
+            summary: 'Create an user record'
+            description: 'you will provide details to sign up the user for app'
+            responses:
+                200:
+                    description: 'user created sucessfully'
+                400:
+                    description: 'Account already exists or  Unable to send otp or create user record, please try again.'
+            requestBody:
+                required: true
+                content:
+                    application/json:
+                        schema:
+                            type: object
+                            properties:
+                                email:
+                                    type: string
+                                    example: 'vamsikrishngonuguntla77@gmail.com'
+                                name:
+                                    type: string
+                                    example: vamsi
+                                password:
+                                    type: string
+                                    example: vk0099
+                            description: 'values to edit in the user detail'
+    /login:
+        post:
+            tags:
+                - 'login'
+            summary: 'user login sucessfully'
+            description: 'you will provide details to login the user for app'
+            responses:
+                200:
+                    description: 'user login sucessfully'
+                400:
+                    description: 'user failed to login'
+            requestBody:
+                required: true
+                content:
+                    application/json:
+                        schema:
+                            type: object
+                            properties:
+                                email:
+                                    type: string
+                                    example: 'vamsikrishngonuguntla77@gmail.com'
+                                password:
+                                    type: string
+                                    example: vk0099
+                            description: 'values to edit in the user detail'
+    /tweet/create:
+        post:
+            security:
+                - token: []
+            tags:
+                - 'tweet'
+            summary: 'user tweeted'
+            description: 'user tweeted a tweet sucessfully'
+            responses:
+                200:
+                    description: 'user sucessfuly tweeted tweet'
+                400:
+                    description: 'user unable to make a tweet.'
+            requestBody:
+                required: true
+                content:
+                    application/json:
+                        schema:
+                            type: object
+                            properties:
+                                description:
+                                    type: string
+                                    example: 'welcome to vk twitter'
+                            description: 'values to edit in the user detail'
+    /tweet/update:
+        post:
+            security:
+                - token: []
+            tags:
+                - 'tweet'
+            summary: 'user updated tweet'
+            description: 'user sucessfully updated a tweet'
+            responses:
+                200:
+                    description: 'user sucessfuly updated tweet'
+                400:
+                    description: 'user unable to update a tweet.'
+            requestBody:
+                required: true
+                content:
+                    application/json:
+                        schema:
+                            type: object
+                            properties:
+                                description:
+                                    type: string
+                                    example: 'welcome to vk twitter'
+                                tweetId:
+                                    type: string
+                                    example: '631372528ad2fc678e439e91'
+                            description: 'values to edit in the user detail'
+    /tweet/delete:
+        post:
+            security:
+                - token: []
+            tags:
+                - 'tweet'
+            summary: 'delete a tweet'
+            description: 'user to delete a tweet'
+            responses:
+                200:
+                    description: 'user sucessfuly deleted tweet'
+                400:
+                    description: 'user unable to delete a tweet.'
+            requestBody:
+                required: true
+                content:
+                    application/json:
+                        schema:
+                            type: object
+                            properties:
+                                tweetId:
+                                    type: string
+                                    example: '631372528ad2fc678e439e91'
+                            description: 'values to edit in the user detail'
+
+    /tweet/allTweets:
+        get:
+            security:
+                - token: []
+            tags:
+                - 'tweet'
+            summary: 'get tweets of all user'
+            description: 'get tweets of an all users'
+            responses:
+                200:
+                    description: 'Successfully got all tweets'
+                400:
+                    description: 'Unable to get the tweets.'
+    /tweet:
+        get:
+            security:
+                - token: []
+            tags:
+                - 'tweet'
+            summary: 'get tweets of an user'
+            description: 'get tweets of an particular user'
+            responses:
+                200:
+                    description: 'Successfully got the tweets of the user you logedin'
+                400:
+                    description: 'Unable to get the tweets.'
+    /tweet/like:
+        post:
+            security:
+                - token: []
+            tags:
+                - 'tweet'
+            summary: 'like a tweet'
+            description: 'user to like a tweet'
+            responses:
+                200:
+                    description: 'user sucessfuly liked a tweet'
+                400:
+                    description: 'user unable to like a tweet.'
+            requestBody:
+                required: true
+                content:
+                    application/json:
+                        schema:
+                            type: object
+                            properties:
+                                tweetId:
+                                    type: string
+                                    example: '631372528ad2fc678e439e91'
+                            description: 'values to edit in the user detail'
+    /tweet/unlike:
+        post:
+            security:
+                - token: []
+            tags:
+                - 'tweet'
+            summary: 'like a tweet'
+            description: 'user to like a tweet'
+            responses:
+                200:
+                    description: 'user sucessfuly liked a tweet'
+                400:
+                    description: 'user unable to like a tweet.'
+            requestBody:
+                required: true
+                content:
+                    application/json:
+                        schema:
+                            type: object
+                            properties:
+                                tweetId:
+                                    type: string
+                                    example: '631372528ad2fc678e439e91'
+                            description: 'values to edit in the user detail'
+    /tweet/retweet:
+        post:
+            security:
+                - token: []
+            tags:
+                - 'tweet'
+            summary: 'retweet a tweet'
+            description: 'user to rwtweet a tweet'
+            responses:
+                200:
+                    description: 'user sucessfuly retweet a tweet'
+                400:
+                    description: 'user unable to retweet a tweet.'
+            requestBody:
+                required: true
+                content:
+                    application/json:
+                        schema:
+                            type: object
+                            properties:
+                                tweetId:
+                                    type: string
+                                    example: '631372528ad2fc678e439e91'
+                            description: 'values to edit in the user detail'
+    /tweet/logout:
+        get:
+            security:
+                - token: []
+            tags:
+                - 'login'
+            summary: 'user logout'
+            description: 'user logout from device'
+            responses:
+                200:
+                    description: 'Successfully got the logedout'
+                400:
+                    description: 'Unable to get the logout.'
+components:
+    securitySchemes:
+        token:
+            type: apiKey
+            in: header
+            name: authorization
