@@ -15,6 +15,7 @@ after clone the project open the respective terminal aand follow below commands 
 then project will run localhost:3000
 
 use this link to open swagger document
+http://localhost:3000/api-docs/
 
 please have patience and go throught the code becuse of time being I did not add comments 
 to each and every line 
