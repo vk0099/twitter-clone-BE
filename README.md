@@ -18,3 +18,12 @@ use this link to open swagger document
 
 please have patience and go throught the code becuse of time being I did not add comments 
 to each and every line 
+
+from the requirements I have missed couple of things
+
+those are 
+
+1. threading
+2. unit test cases
+
+please kindly ignore them and check the code
