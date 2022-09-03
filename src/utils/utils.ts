@@ -31,7 +31,7 @@ export function comparePassword(
 
 export async function jwt_create(data: any): Promise<string> {
 	return await jwtSign({ email: data }, 'KARVY_INPRO_SECRET', {
-		expiresIn: '10h'
+		expiresIn: '1h'
 	});
 }
 
