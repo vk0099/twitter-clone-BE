@@ -6,10 +6,8 @@ import authenticate from './utils/autheticat';
 const PREFIX = '/api/v1';
 
 export = (app) => {
-	app.get(`${PREFIX}/`, (req, res) => {
-		res.status(200).send('Hello I am Inpro :)');
-	});
 	app.use(`${PREFIX}/login`, loginRoute);
+	app.use(`${PREFIX}/logout`, authenticate, loginRoute);
 	app.use(`${PREFIX}/tweet`, authenticate, tweetRoute);
 
 	app.use((req, res, next) => {

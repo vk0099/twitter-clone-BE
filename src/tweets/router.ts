@@ -11,7 +11,6 @@ import {
 	updateTweet
 } from './module';
 import { APIError } from '../utils/custom-error';
-import { logout } from '../users/module';
 
 const router = Router();
 
@@ -97,17 +96,6 @@ router.post(
 			res.status(200).send(await retweeted(req.body, res.user));
 		} catch (error) {
 			next(new Error(error));
-		}
-	}
-);
-
-router.get(
-	'/logout',
-	async (req: Request, res: Response, next: NextFunction) => {
-		try {
-			res.status(OK).send(await logout(res.user));
-		} catch (error) {
-			next(new APIError(error.message, error.code));
 		}
 	}
 );

@@ -4,8 +4,8 @@ import { tweetSchema } from './tweet-schema';
 
 export async function createTweet(objbody, userObj) {
 	try {
-		if (!objbody.description) {
-			new APIError('Please enter description of the tweet!', 400);
+		if (!objbody || !objbody.description) {
+			throw new APIError('Please enter description of the tweet!', 400);
 		}
 		let insert_data = {
 			description: objbody.description,
@@ -22,7 +22,10 @@ export async function createTweet(objbody, userObj) {
 export async function deleteTweet(objbody, userObj) {
 	try {
 		if (!objbody.tweetId) {
-			new APIError('Please select tweet which need to be deleted!', 400);
+			throw new APIError(
+				'Please select tweet which need to be deleted!',
+				400
+			);
 		}
 		let deleted = await tweetSchema.deleteOne({
 			_id: new Types.ObjectId(objbody['tweetId']),
@@ -42,7 +45,7 @@ export async function deleteTweet(objbody, userObj) {
 export async function updateTweet(objbody, userObj) {
 	try {
 		if (!objbody.description || !objbody.tweetId) {
-			new APIError(
+			throw new APIError(
 				'Please enter description and tweetId of the tweet!',
 				400
 			);

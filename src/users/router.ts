@@ -26,4 +26,12 @@ router.post(
 	}
 );
 
+router.get('/', async (req: Request, res: Response, next: NextFunction) => {
+	try {
+		res.status(OK).send(await logout(res.user));
+	} catch (error) {
+		next(new APIError(error.message, error.code));
+	}
+});
+
 export = router;
