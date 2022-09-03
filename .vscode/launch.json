@@ -1,0 +1,22 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Launch Program",
+            "program": "${workspaceFolder}/main.ts",
+            "stopOnEntry": false,
+            "args": [],
+            "cwd": "${workspaceRoot}",
+            "runtimeExecutable": null,
+            "runtimeArgs": [
+                "--nolazy"
+            ],
+            "envFile": "${workspaceRoot}/.env",
+            "sourceMaps": true,
+            "autoAttachChildProcesses": true,
+            "preLaunchTask": "tsc: build - tsconfig.json",
+        }
+    ]
+}
